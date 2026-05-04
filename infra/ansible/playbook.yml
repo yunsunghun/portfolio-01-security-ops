@@ -1,0 +1,23 @@
+---
+# 서버 운영 기준선 점검 예시 (교육/포트폴리오용)
+- name: Baseline health checks (local demo)
+  hosts: localhost
+  gather_facts: true
+  tasks:
+    - name: Verify ansible is runnable
+      ansible.builtin.ping:
+
+    - name: Show OS family (문서화·감사 시 유용한 팩트 예시)
+      ansible.builtin.debug:
+        msg: "OS family={{ ansible_os_family }} python={{ ansible_python_version }}"
+
+    - name: Disk space warning threshold check (Linux 계열)
+      ansible.builtin.shell: df -P / | awk 'NR==2 {gsub(/%/,"",$5); print $5}'
+      register: root_usage
+      changed_when: false
+      when: ansible_os_family != "Windows"
+
+    - name: Report root filesystem usage percent
+      ansible.builtin.debug:
+        msg: "Root filesystem usage={{ root_usage.stdout }}%"
+      when: ansible_os_family != "Windows" and root_usage is defined
