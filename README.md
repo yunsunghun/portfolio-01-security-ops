@@ -1,6 +1,7 @@
 # 포트폴리오 01 — 보안관제 · 서비스 · 서버 운영
 
 클라우드 계정 없이도 **문서·코드·CI**로 운영 역량을 설명할 수 있게 구성한 저장소입니다.  
+**데모랩(DemoLab)** 가상 조직·티켓·IP는 [docs/DUMMY-CANON.md](docs/DUMMY-CANON.md)와 `examples/sample-data/`에 정리되어 있습니다.  
 인사 담당자는 *역할과 성과를 말로 확장할 수 있는 뼈대*를, 엔지니어는 *실행·검증 가능한 아티팩트*를 빠르게 확인할 수 있습니다.
 
 ## 한 줄 요약
@@ -31,7 +32,10 @@
    chmod +x automation/scripts/*.sh
    ./automation/scripts/healthcheck.sh
    ./automation/scripts/disk_check.sh
+   ./automation/scripts/log_watchdog.sh
    ```
+
+   `log_watchdog.sh`는 기본으로 `examples/sample-data/app.log`(더미 BFF 로그)를 검사합니다.
 
 3. **Terraform (클라우드 자원 없음)**
 
@@ -49,6 +53,7 @@
 
 | 문서 | 용도 |
 |------|------|
+| [docs/DUMMY-CANON.md](docs/DUMMY-CANON.md) | 가상 조직·IP·티켓 ID 규약 (전체 더미의 기준) |
 | [docs/00-PORTFOLIO-BRIEF.md](docs/00-PORTFOLIO-BRIEF.md) | 기획·범위·성공 지표·02/03 분리 제안 |
 | [docs/01-ARCHITECTURE.md](docs/01-ARCHITECTURE.md) | 논리 아키텍처·확장 메모 |
 | [docs/02-SECURITY-GOVERNANCE.md](docs/02-SECURITY-GOVERNANCE.md) | 보안·관제 거버넌스 |
@@ -63,7 +68,8 @@
 ```text
 01/
 ├── docs/                    # 기획·아키텍처·운영 문서
-├── examples/demo-stack/     # Nginx 데모 (/health)
+├── examples/demo-stack/     # DL-PORTAL Nginx 데모 (/health)
+├── examples/sample-data/    # CMDB CSV, 앱 로그, 인시던트 타임라인(더미)
 ├── automation/scripts/      # 헬스·디스크·로그·백업 스텁
 ├── infra/terraform/         # random 리소스 예제 (로컬 검증용)
 ├── infra/ansible/           # localhost 기준선 플레이북

@@ -1,0 +1,6 @@
+2026-05-04T10:00:01Z INFO tenant=demolab env=lab service=bff-api req_id=req-7a2b method=GET path=/v1/orders/ORD-LAB-9001 status=200 latency_ms=42
+2026-05-04T10:00:02Z INFO tenant=demolab env=lab service=bff-api req_id=req-7a2c method=GET path=/v1/orders/ORD-LAB-9002 status=200 latency_ms=55
+2026-05-04T10:00:05Z WARN tenant=demolab env=lab service=bff-api req_id=req-7a2d method=GET path=/v1/orders/ORD-LAB-404 status=404 latency_ms=12
+2026-05-04T10:00:09Z ERROR tenant=demolab env=lab service=bff-api req_id=req-7a2e method=GET path=/v1/orders/ORD-LAB-5001 status=500 latency_ms=210 msg=upstream_timeout
+2026-05-04T10:00:10Z ERROR tenant=demolab env=lab service=bff-api req_id=req-7a2f method=GET path=/v1/orders/ORD-LAB-5002 status=500 latency_ms=198 msg=upstream_timeout
+2026-05-04T10:00:11Z INFO tenant=demolab env=lab service=bff-api req_id=req-7a30 method=GET path=/health status=200 latency_ms=3

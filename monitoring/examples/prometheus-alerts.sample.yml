@@ -1,13 +1,35 @@
-# Prometheus 알림 규칙 샘플 (관측성 확장 시 참고)
-# 실제 적용 시: recording rules, label cardinality 주의
+# Prometheus 알림 규칙 — 데모랩 더미 라벨
+# 실제 적용 시 cardinality·recording 규칙을 별도 검토하세요.
 groups:
-  - name: demo_service
+  - name: demolab_service
     rules:
-      - alert: DemoHealthcheckFailing
-        expr: probe_success{job="demo"} == 0
+      - alert: DemolabPortalHealthFailing
+        expr: probe_success{job="blackbox", instance="portal-lab"} == 0
         for: 2m
         labels:
           severity: critical
+          tenant: demolab
+          service: DL-PORTAL
         annotations:
-          summary: "데모 헬스체크 실패"
-          description: "2분 이상 헬스 프로브가 실패했습니다. 런북 RB-01을 따르세요."
+          summary: "DL-PORTAL 헬스 실패"
+          description: "런북 RB-01, 인시던트 INC-2026-0412 참고."
+
+      - alert: DemolabBffHigh5xx
+        expr: |
+          sum(rate(http_requests_total{service="bff-api",status=~"5.."}[5m]))
+            /
+          sum(rate(http_requests_total{service="bff-api"}[5m]))
+          > 0.005
+        for: 3m
+        labels:
+          severity: warning
+          tenant: demolab
+          service: DL-BFF
+        annotations:
+          summary: "BFF 5xx 비율 임계 초과(Lab)"
+          description: "기준 0.5% 초과 시 알림. RC: REL-2026-05-02.3 점검."
+
+  - name: demolab_recording
+    rules:
+      - record: job:bff_http_5xx:rate5m
+        expr: sum(rate(http_requests_total{service="bff-api",status=~"5.."}[5m])) by (job)

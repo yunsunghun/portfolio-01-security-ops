@@ -1,0 +1,6 @@
+asset_id,hostname,ip,service_code,env,owner_team
+VM-10511,jmp-lab-01,10.50.0.10,INFRA,lab,platform-ops
+VM-10522,portal-web,10.60.0.11,DL-PORTAL,lab,platform-ops
+VM-10523,bff-api,10.60.0.21,DL-BFF,lab,backend-core
+VM-10530,orders-db,10.70.0.5,DL-ORDERS-DB,lab,backend-core
+LB-9001,LB-LAB-01,203.0.113.50,EDGE,lab,platform-ops

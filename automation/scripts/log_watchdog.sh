@@ -2,7 +2,9 @@
 # 최근 로그에서 패턴 검색 (보안관제 — 단순 시연)
 set -eu
 
-LOG_FILE="${LOG_FILE:-./var/log/app.log}"
+SCRIPT_DIR=$(CDPATH= cd -- "$(dirname "$0")" && pwd)
+REPO_ROOT=$(CDPATH= cd -- "$SCRIPT_DIR/../.." && pwd)
+LOG_FILE="${LOG_FILE:-$REPO_ROOT/examples/sample-data/app.log}"
 PATTERN="${PATTERN:-ERROR}"
 
 if [ ! -f "$LOG_FILE" ]; then
