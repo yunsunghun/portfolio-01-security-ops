@@ -66,7 +66,7 @@ flowchart LR
 
 ## 6. 모니터링 Lab
 
-- `examples/monitoring-lab`: Prometheus + Blackbox(`/health` 프로브) + Grafana.
+- `examples/monitoring-lab`: Prometheus + **Alertmanager** + Blackbox(`/health` 프로브) + Grafana + Lab webhook sink.
 - 설명 문서: [08-MONITORING-LAB.md](08-MONITORING-LAB.md)
 
 ## 7. 의존성

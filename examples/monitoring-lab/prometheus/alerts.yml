@@ -1,0 +1,23 @@
+# Prometheus 알림 규칙 — Lab (Alertmanager로 전달)
+groups:
+  - name: demolab_portal
+    rules:
+      - alert: PortalHealthProbeFailed
+        expr: probe_success{job="blackbox-portal"} == 0
+        for: 1m
+        labels:
+          severity: critical
+          tenant: demolab
+        annotations:
+          summary: "DL-PORTAL /health 프로브 실패"
+          description: "Blackbox probe가 1분 이상 실패했습니다. 런북 RB-01 참고."
+
+      - alert: PortalHealthProbeSlow
+        expr: probe_duration_seconds{job="blackbox-portal"} > 2
+        for: 5m
+        labels:
+          severity: warning
+          tenant: demolab
+        annotations:
+          summary: "프로브 지연 2초 초과"
+          description: "네트워크 또는 upstream 지연 의심(Lab)."

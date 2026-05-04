@@ -4,6 +4,10 @@
 **데모랩(DemoLab)** 가상 조직·티켓·IP는 [docs/DUMMY-CANON.md](docs/DUMMY-CANON.md)와 `examples/sample-data/`에 정리되어 있습니다.  
 인사 담당자는 *역할과 성과를 말로 확장할 수 있는 뼈대*를, 엔지니어는 *실행·검증 가능한 아티팩트*를 빠르게 확인할 수 있습니다.
 
+## English (summary)
+
+**DemoLab (fictional)** operations portfolio: runbooks, security governance templates, **Docker demos**, **Terraform/Ansible samples**, a **Monitoring Lab** (Prometheus, **Alertmanager**, Grafana, Blackbox), and CI reference (`docs/reference-github-actions-ci.yml`). All IPs/tickets are **dummy** — see [docs/DUMMY-CANON.md](docs/DUMMY-CANON.md). For your own narrative, use [docs/ABOUT-ME-TEMPLATE.md](docs/ABOUT-ME-TEMPLATE.md).
+
 ## 한 줄 요약
 
 **가용성 점검, 서버 기준선, 보안 거버넌스 문서, 인시던트 런북**을 한 레포에 묶고, **Docker 데모 + Terraform/Ansible 샘플 + CI 정의(`docs/reference-github-actions-ci.yml`)**로 재현성을 보여 줍니다.
@@ -56,6 +60,7 @@
 
    - Grafana: http://localhost:3000 (`demolab` / `demolab-grafana`)
    - Prometheus: http://localhost:9090
+   - Alertmanager: http://localhost:9093
 
    상세: [examples/monitoring-lab/README.md](examples/monitoring-lab/README.md)
 
@@ -74,7 +79,10 @@
 | [docs/05-LAB-VIRTUAL-ENVIRONMENT.md](docs/05-LAB-VIRTUAL-ENVIRONMENT.md) | 가상 Lab 토폴로지·세그먼트(예시) |
 | [docs/06-MOCK-SOC-EXERCISE.md](docs/06-MOCK-SOC-EXERCISE.md) | 모의 관제 시나리오·타임라인 표 |
 | [docs/07-ETHICAL-RED-TEAM-LAB-NOTES.md](docs/07-ETHICAL-RED-TEAM-LAB-NOTES.md) | 윤리적 모의 침해(Lab 한정) ROE·보고 템플릿 |
-| [docs/08-MONITORING-LAB.md](docs/08-MONITORING-LAB.md) | Prometheus·Grafana·Blackbox Lab 설명 |
+| [docs/08-MONITORING-LAB.md](docs/08-MONITORING-LAB.md) | Prometheus·Alertmanager·Grafana·Blackbox Lab 설명 |
+| [docs/09-TABLETOP-SESSION-AGENDA.md](docs/09-TABLETOP-SESSION-AGENDA.md) | 모의 관제 테이블탑 15분 아젠다 |
+| [docs/ABOUT-ME-TEMPLATE.md](docs/ABOUT-ME-TEMPLATE.md) | 본인 경험 서사 초안 (실제 vs 가상 구분) |
+| [docs/assets/README.md](docs/assets/README.md) | 스크린샷 촬영 가이드 |
 
 ## 디렉터리 구조
 
@@ -82,7 +90,7 @@
 01/
 ├── docs/                    # 기획·아키텍처·운영 문서
 ├── examples/demo-stack/     # DL-PORTAL Nginx 데모 (/health)
-├── examples/monitoring-lab/ # Prometheus + Grafana + Blackbox Lab
+├── examples/monitoring-lab/ # Prometheus + Alertmanager + Grafana + Blackbox
 ├── examples/sample-data/    # CMDB CSV, 앱 로그, 인시던트 타임라인(더미)
 ├── automation/scripts/      # 헬스·디스크·로그·백업 스텁
 ├── infra/terraform/         # random 리소스 예제 (로컬 검증용)
@@ -112,6 +120,11 @@ git add .github/workflows/ci.yml && git commit -m "ci: GitHub Actions 추가" &&
 ## 02 · 03 포트폴리오와 나누기
 
 01은 **통합 운영 레퍼런스**로 두고, 02는 관측성/SLO, 03은 침해 대응·컴플라이언스 심화를 권장합니다. (상세는 포트폴리오 브리프 참고.)
+
+## 기여 · 스크린샷
+
+- [CONTRIBUTING.md](CONTRIBUTING.md)
+- 캡처 가이드: [docs/assets/README.md](docs/assets/README.md)
 
 ## 라이선스 · 보안
 

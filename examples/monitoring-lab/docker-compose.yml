@@ -12,6 +12,22 @@ services:
     volumes:
       - ./blackbox/blackbox.yml:/config/blackbox.yml:ro
 
+  # Lab: Alertmanager webhook 수신용 (200 응답). 실제 Slack 등으로 교체 가능.
+  alert_sink:
+    image: hashicorp/http-echo:1.0.0
+    command: ["-listen=:9999", "-text=alert-ok"]
+
+  alertmanager:
+    image: prom/alertmanager:v0.27.0
+    command:
+      - "--config.file=/etc/alertmanager/alertmanager.yml"
+    volumes:
+      - ./alertmanager/alertmanager.yml:/etc/alertmanager/alertmanager.yml:ro
+    ports:
+      - "${ALERTMANAGER_PORT:-9093}:9093"
+    depends_on:
+      - alert_sink
+
   prometheus:
     image: prom/prometheus:v2.52.0
     command:
@@ -19,11 +35,13 @@ services:
       - "--web.enable-lifecycle"
     volumes:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./prometheus/alerts.yml:/etc/prometheus/alerts.yml:ro
     ports:
       - "${PROM_PORT:-9090}:9090"
     depends_on:
       - portal
       - blackbox
+      - alertmanager
 
   grafana:
     image: grafana/grafana:11.2.0
