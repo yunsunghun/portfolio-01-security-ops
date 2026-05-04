@@ -34,3 +34,18 @@ scrape_configs:
         target_label: instance
       - target_label: __address__
         replacement: blackbox:9115
+
+  # Blackbox exporter 자체 메트릭 (항상 컨테이너망에서 수집 가능)
+  - job_name: blackbox-exporter
+    static_configs:
+      - targets: ["blackbox:9115"]
+        labels:
+          tenant: demolab
+          env: lab
+
+  - job_name: alertmanager
+    static_configs:
+      - targets: ["alertmanager:9093"]
+        labels:
+          tenant: demolab
+          env: lab

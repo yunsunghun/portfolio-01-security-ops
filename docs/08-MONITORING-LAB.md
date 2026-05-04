@@ -8,6 +8,8 @@
 4. **시각화(Grafana)**.
 5. **Lab webhook**: `alert_sink`가 실제 Slack 대신 200 응답만 반환(안전).
 
+Prometheus는 **Blackbox exporter·Alertmanager**의 `/metrics`도 스크랩합니다(호스트 의존 exporter 없이 스택 가시성 확보).
+
 ## 실행
 
 [examples/monitoring-lab/README.md](../examples/monitoring-lab/README.md)

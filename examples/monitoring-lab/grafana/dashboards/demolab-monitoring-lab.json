@@ -2,7 +2,7 @@
   "title": "DemoLab — Monitoring Lab",
   "uid": "demolab-monitoring-lab",
   "schemaVersion": 39,
-  "version": 1,
+  "version": 2,
   "refresh": "10s",
   "time": { "from": "now-1h", "to": "now" },
   "timezone": "browser",
@@ -70,6 +70,90 @@
       "options": {
         "legend": { "displayMode": "list", "placement": "bottom", "showLegend": true },
         "tooltip": { "mode": "single", "sort": "none" }
+      }
+    },
+    {
+      "type": "stat",
+      "title": "Prometheus UP",
+      "id": 3,
+      "gridPos": { "x": 0, "y": 8, "w": 6, "h": 5 },
+      "datasource": { "type": "prometheus", "uid": "DS_PROMETHEUS" },
+      "targets": [{ "expr": "up{job=\"prometheus\"}", "refId": "A" }],
+      "options": {
+        "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false },
+        "orientation": "auto",
+        "textMode": "auto",
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "red", "value": null },
+              { "color": "green", "value": 1 }
+            ]
+          }
+        },
+        "overrides": []
+      }
+    },
+    {
+      "type": "stat",
+      "title": "Alertmanager UP",
+      "id": 4,
+      "gridPos": { "x": 6, "y": 8, "w": 6, "h": 5 },
+      "datasource": { "type": "prometheus", "uid": "DS_PROMETHEUS" },
+      "targets": [{ "expr": "up{job=\"alertmanager\"}", "refId": "A" }],
+      "options": {
+        "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false },
+        "orientation": "auto",
+        "textMode": "auto",
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "red", "value": null },
+              { "color": "green", "value": 1 }
+            ]
+          }
+        },
+        "overrides": []
+      }
+    },
+    {
+      "type": "stat",
+      "title": "Blackbox exporter UP",
+      "id": 5,
+      "gridPos": { "x": 12, "y": 8, "w": 6, "h": 5 },
+      "datasource": { "type": "prometheus", "uid": "DS_PROMETHEUS" },
+      "targets": [{ "expr": "up{job=\"blackbox-exporter\"}", "refId": "A" }],
+      "options": {
+        "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false },
+        "orientation": "auto",
+        "textMode": "auto",
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "red", "value": null },
+              { "color": "green", "value": 1 }
+            ]
+          }
+        },
+        "overrides": []
       }
     }
   ]

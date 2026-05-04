@@ -59,6 +59,27 @@ PROM_PORT=9091 GRAFANA_PORT=3001 ALERTMANAGER_PORT=9094 docker compose up -d
 - Lab 전용 비밀번호·웹훅입니다. **인터넷에 노출하지 마세요.**
 - 프로덕션: Slack/PagerDuty/OIDC 등으로 교체하세요.
 
+## 호스트 스모크 (선택)
+
+스택 기동 후 **호스트 터미널**에서:
+
+```bash
+sh scripts/smoke.sh
+```
+
+포트를 바꿨다면:
+
+```bash
+PROM_URL=http://127.0.0.1:9091 GRAFANA_URL=http://127.0.0.1:3001 \
+  ALERTMANAGER_URL=http://127.0.0.1:9094 sh scripts/smoke.sh
+```
+
+## Alertmanager 라우팅 (Lab)
+
+- `severity=critical` → `lab-webhook-critical`
+- 그 외 기본 → `lab-webhook-warning`  
+  두 receiver 모두 동일 `alert_sink`로 POST합니다. 프로덕션에서는 Slack/PagerDuty 등으로 **receiver를 분리**하면 됩니다.
+
 ## 종료
 
 ```bash

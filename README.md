@@ -6,7 +6,7 @@
 
 ## English (summary)
 
-**DemoLab (fictional)** operations portfolio: runbooks, security governance templates, **Docker demos**, **Terraform/Ansible samples**, a **Monitoring Lab** (Prometheus, **Alertmanager**, Grafana, Blackbox), and CI reference (`docs/reference-github-actions-ci.yml`). All IPs/tickets are **dummy** — see [docs/DUMMY-CANON.md](docs/DUMMY-CANON.md). For your own narrative, use [docs/ABOUT-ME-TEMPLATE.md](docs/ABOUT-ME-TEMPLATE.md).
+**DemoLab (fictional)** operations portfolio: runbooks, security governance templates, **Docker demos**, **Terraform/Ansible samples**, a **Monitoring Lab** (Prometheus, **Alertmanager**, Grafana, Blackbox), and CI reference (`docs/reference-github-actions-ci.yml`). All IPs/tickets are **dummy** — see [docs/DUMMY-CANON.md](docs/DUMMY-CANON.md). For your own narrative, use [docs/ABOUT-ME-TEMPLATE.md](docs/ABOUT-ME-TEMPLATE.md). Full English readme: [README.en.md](README.en.md) · [CHANGELOG.md](CHANGELOG.md).
 
 ## 한 줄 요약
 
@@ -64,6 +64,8 @@
 
    상세: [examples/monitoring-lab/README.md](examples/monitoring-lab/README.md)
 
+   스택 기동 후(선택): `sh examples/monitoring-lab/scripts/smoke.sh`
+
 환경 변수 예시는 [`.env.example`](.env.example)를 참고하세요.
 
 ## 문서 맵 (기획 → 운영)
@@ -83,6 +85,10 @@
 | [docs/09-TABLETOP-SESSION-AGENDA.md](docs/09-TABLETOP-SESSION-AGENDA.md) | 모의 관제 테이블탑 15분 아젠다 |
 | [docs/ABOUT-ME-TEMPLATE.md](docs/ABOUT-ME-TEMPLATE.md) | 본인 경험 서사 초안 (실제 vs 가상 구분) |
 | [docs/assets/README.md](docs/assets/README.md) | 스크린샷 촬영 가이드 |
+| [docs/adr/README.md](docs/adr/README.md) | ADR 목록 |
+| [CHANGELOG.md](CHANGELOG.md) | 변경 요약 |
+| [README.en.md](README.en.md) | 영문 README |
+| [security/access-review-quarterly-sample.md](security/access-review-quarterly-sample.md) | 분기 접근 리뷰 샘플(더미) |
 
 ## 디렉터리 구조
 
