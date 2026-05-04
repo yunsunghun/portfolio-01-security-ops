@@ -5,7 +5,7 @@
 
 ## 한 줄 요약
 
-**가용성 점검, 서버 기준선, 보안 거버넌스 문서, 인시던트 런북**을 한 레포에 묶고, **Docker 데모 + Terraform/Ansible 샘플 + GitHub Actions**로 재현성을 보여 줍니다.
+**가용성 점검, 서버 기준선, 보안 거버넌스 문서, 인시던트 런북**을 한 레포에 묶고, **Docker 데모 + Terraform/Ansible 샘플 + CI 정의(`docs/reference-github-actions-ci.yml`)**로 재현성을 보여 줍니다.
 
 ## 이 저장소로 보여 주고 싶은 역량
 
@@ -66,7 +66,18 @@
 ├── infra/ansible/           # localhost 기준선 플레이북
 ├── monitoring/examples/     # Prometheus 알림 샘플
 ├── security/                # 정책·CVE 템플릿
-└── .github/workflows/       # ShellCheck + terraform validate
+└── docs/reference-github-actions-ci.yml  # GitHub Actions CI (복사해 활성화)
+```
+
+### GitHub Actions를 켜려면
+
+`gh` HTTPS 토큰에 **workflow** 권한이 있어야 `.github/workflows/`에 YAML을 푸시할 수 있습니다. 아래 후 이 파일을 `.github/workflows/ci.yml`로 복사해 커밋하세요.
+
+```bash
+gh auth refresh -h github.com -s workflow
+mkdir -p .github/workflows
+cp docs/reference-github-actions-ci.yml .github/workflows/ci.yml
+git add .github/workflows/ci.yml && git commit -m "ci: GitHub Actions 추가" && git push
 ```
 
 ## 독자별 추천 읽기 순서

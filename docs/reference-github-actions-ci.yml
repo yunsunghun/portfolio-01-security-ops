@@ -1,3 +1,7 @@
+# GitHub Actions CI 정의 (참고용)
+# 사용법: `gh auth refresh -h github.com -s workflow` 로 workflow 권한을 연 뒤
+# 이 파일을 복사해 `.github/workflows/ci.yml` 로 두고 커밋·푸시하면 Actions가 실행됩니다.
+
 name: CI
 
 on:
