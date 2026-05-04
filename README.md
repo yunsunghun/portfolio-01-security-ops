@@ -13,7 +13,7 @@
 |------|------|
 | 서비스 운영 | 헬스체크, 배포 체크리스트, 롤백 판단 프레임 |
 | 서버 운영 | 디스크·로그 점검 스크립트, Ansible 기준선 예시 |
-| 보안 관제 | 기준선 체크리스트, CVE 대응 템플릿, CI 정적 분석 |
+| 보안 관제 | 기준선 체크리스트, CVE 대응 템플릿, CI 정적 분석, **가상 Lab·모의 관제·윤리적 모의 침해 문서** |
 
 ## 빠른 시작 (15분 이내)
 
@@ -54,6 +54,9 @@
 | [docs/02-SECURITY-GOVERNANCE.md](docs/02-SECURITY-GOVERNANCE.md) | 보안·관제 거버넌스 |
 | [docs/03-RUNBOOKS.md](docs/03-RUNBOOKS.md) | 장애·관제 런북 + 시뮬레이션 과제 |
 | [docs/04-DEPLOYMENT-CHECKLIST.md](docs/04-DEPLOYMENT-CHECKLIST.md) | 릴리즈·롤백 체크리스트 |
+| [docs/05-LAB-VIRTUAL-ENVIRONMENT.md](docs/05-LAB-VIRTUAL-ENVIRONMENT.md) | 가상 Lab 토폴로지·세그먼트(예시) |
+| [docs/06-MOCK-SOC-EXERCISE.md](docs/06-MOCK-SOC-EXERCISE.md) | 모의 관제 시나리오·타임라인 표 |
+| [docs/07-ETHICAL-RED-TEAM-LAB-NOTES.md](docs/07-ETHICAL-RED-TEAM-LAB-NOTES.md) | 윤리적 모의 침해(Lab 한정) ROE·보고 템플릿 |
 
 ## 디렉터리 구조
 
