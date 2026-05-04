@@ -47,6 +47,18 @@
 
    로컬에 Terraform이 없어도, 푸시 후 GitHub Actions에서 `fmt`·`validate`가 실행됩니다.
 
+4. **모니터링 Lab (Prometheus · Grafana · Blackbox)**
+
+   ```bash
+   cd examples/monitoring-lab
+   docker compose up -d
+   ```
+
+   - Grafana: http://localhost:3000 (`demolab` / `demolab-grafana`)
+   - Prometheus: http://localhost:9090
+
+   상세: [examples/monitoring-lab/README.md](examples/monitoring-lab/README.md)
+
 환경 변수 예시는 [`.env.example`](.env.example)를 참고하세요.
 
 ## 문서 맵 (기획 → 운영)
@@ -62,6 +74,7 @@
 | [docs/05-LAB-VIRTUAL-ENVIRONMENT.md](docs/05-LAB-VIRTUAL-ENVIRONMENT.md) | 가상 Lab 토폴로지·세그먼트(예시) |
 | [docs/06-MOCK-SOC-EXERCISE.md](docs/06-MOCK-SOC-EXERCISE.md) | 모의 관제 시나리오·타임라인 표 |
 | [docs/07-ETHICAL-RED-TEAM-LAB-NOTES.md](docs/07-ETHICAL-RED-TEAM-LAB-NOTES.md) | 윤리적 모의 침해(Lab 한정) ROE·보고 템플릿 |
+| [docs/08-MONITORING-LAB.md](docs/08-MONITORING-LAB.md) | Prometheus·Grafana·Blackbox Lab 설명 |
 
 ## 디렉터리 구조
 
@@ -69,6 +82,7 @@
 01/
 ├── docs/                    # 기획·아키텍처·운영 문서
 ├── examples/demo-stack/     # DL-PORTAL Nginx 데모 (/health)
+├── examples/monitoring-lab/ # Prometheus + Grafana + Blackbox Lab
 ├── examples/sample-data/    # CMDB CSV, 앱 로그, 인시던트 타임라인(더미)
 ├── automation/scripts/      # 헬스·디스크·로그·백업 스텁
 ├── infra/terraform/         # random 리소스 예제 (로컬 검증용)
@@ -92,8 +106,8 @@ git add .github/workflows/ci.yml && git commit -m "ci: GitHub Actions 추가" &&
 ## 독자별 추천 읽기 순서
 
 - **채용 담당자**: `README` → `docs/00-PORTFOLIO-BRIEF.md` → `docs/03-RUNBOOKS.md` 앞부분.
-- **SRE / 인프라**: `docs/01-ARCHITECTURE.md` → `examples/demo-stack` → `automation/scripts` → `infra/*`.
-- **보안 / 관제**: `docs/02-SECURITY-GOVERNANCE.md` → `security/` → `monitoring/examples`.
+- **SRE / 인프라**: `docs/01-ARCHITECTURE.md` → `examples/demo-stack` → `examples/monitoring-lab` → `automation/scripts` → `infra/*`.
+- **보안 / 관제**: `docs/02-SECURITY-GOVERNANCE.md` → `security/` → `monitoring/examples` → `docs/08-MONITORING-LAB.md`.
 
 ## 02 · 03 포트폴리오와 나누기
 

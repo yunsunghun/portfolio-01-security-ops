@@ -64,7 +64,12 @@ flowchart LR
 - **비밀**: Vault 대신 Lab에서는 `.env` + 시크릿 매니저 **모의**만 문서화.
 - **네트워크**: 앱 존 ↔ 데이터 존 ACL을 **포트 단위**로 명시.
 
-## 6. 의존성
+## 6. 모니터링 Lab
 
-- Docker Engine + Compose v2 (데모).
+- `examples/monitoring-lab`: Prometheus + Blackbox(`/health` 프로브) + Grafana.
+- 설명 문서: [08-MONITORING-LAB.md](08-MONITORING-LAB.md)
+
+## 7. 의존성
+
+- Docker Engine + Compose v2 (데모·모니터링 Lab).
 - Terraform 1.5+, Ansible 2.14+ (선택).
