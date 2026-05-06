@@ -2,6 +2,13 @@
 
 포트폴리오·교육용 저장소입니다. 버전은 **문서상**의 마일스톤입니다.
 
+## [0.7.0] — 2026-05-07
+
+### Added
+
+- CI 참조에 **Gitleaks**, **Trivy fs** 잡 추가 (`docs/reference-github-actions-ci.yml`).
+- `.trivyignore`(주석 예시), `docs/16-CI-SECURITY-SCANNING.md` 활성화 가이드.
+
 ## [0.6.0] — 2026-05-07
 
 ### Added

@@ -1,0 +1,3 @@
+# Trivy fs 스캔 예외 (필요 시만 추가). 사유를 주석으로 남기세요.
+# 예: docs/assets 대용량 바이너리 오탐 시
+# docs/assets/grafana-dashboard-mockup.png

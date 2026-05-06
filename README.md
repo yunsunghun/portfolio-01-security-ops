@@ -89,6 +89,7 @@
 | [docs/13-CONTROLS-MAPPING.md](docs/13-CONTROLS-MAPPING.md) | ISO 27001 Annex A 요지 매핑 |
 | [docs/14-SECURITY-AWARENESS-METRICS.md](docs/14-SECURITY-AWARENESS-METRICS.md) | 인식·피싱 시뮬 지표(더미) |
 | [docs/15-BREACH-SCENARIO-ACCOUNT-TAKEOVER.md](docs/15-BREACH-SCENARIO-ACCOUNT-TAKEOVER.md) | 침해 시나리오 1페이지(가상) |
+| [docs/16-CI-SECURITY-SCANNING.md](docs/16-CI-SECURITY-SCANNING.md) | CI: Gitleaks · Trivy fs 활성화 가이드 |
 | [docs/ABOUT-ME-TEMPLATE.md](docs/ABOUT-ME-TEMPLATE.md) | 본인 경험 서사 초안 (실제 vs 가상 구분) |
 | [docs/assets/README.md](docs/assets/README.md) | 스크린샷 촬영 가이드 |
 | [docs/adr/README.md](docs/adr/README.md) | ADR 목록 |
@@ -123,8 +124,11 @@
 gh auth refresh -h github.com -s workflow
 mkdir -p .github/workflows
 cp docs/reference-github-actions-ci.yml .github/workflows/ci.yml
-git add .github/workflows/ci.yml && git commit -m "ci: GitHub Actions 추가" && git push
+git add .github/workflows/ci.yml .trivyignore
+git commit -m "ci: GitHub Actions (ShellCheck, Terraform, Gitleaks, Trivy)" && git push
 ```
+
+보안 스캔 설명: [docs/16-CI-SECURITY-SCANNING.md](docs/16-CI-SECURITY-SCANNING.md).
 
 ## 독자별 추천 읽기 순서
 

@@ -14,6 +14,7 @@
 ## CI
 
 - `docs/reference-github-actions-ci.yml`를 `.github/workflows/ci.yml`로 복사하면 Actions가 동작합니다. (`workflow` OAuth 스코프 필요)
+- 포함 작업: ShellCheck, Terraform, **Gitleaks**, **Trivy fs**. 상세는 [docs/16-CI-SECURITY-SCANNING.md](docs/16-CI-SECURITY-SCANNING.md).
 
 ## 더미 데이터
 

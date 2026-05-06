@@ -38,3 +38,29 @@ jobs:
         run: |
           terraform init -backend=false
           terraform validate
+
+  # 시크릿 커밋 탐지 (히스토리 전체)
+  gitleaks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # 파일시스템 취약점 스캔 (라이브러리·설정 노출 등). 오탐 시 .trivyignore 로 조정.
+  trivy-fs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          scan-type: fs
+          scan-ref: .
+          severity: CRITICAL,HIGH
+          ignore-unfixed: true
+          # 포트폴리오: 첫 도입 시 실패가 많으면 "0"으로 바꾸고 .trivyignore 를 정비한 뒤 1로 전환.
+          exit-code: "1"
+          trivyignores: .trivyignore
