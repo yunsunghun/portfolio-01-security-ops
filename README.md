@@ -83,6 +83,12 @@
 | [docs/07-ETHICAL-RED-TEAM-LAB-NOTES.md](docs/07-ETHICAL-RED-TEAM-LAB-NOTES.md) | 윤리적 모의 침해(Lab 한정) ROE·보고 템플릿 |
 | [docs/08-MONITORING-LAB.md](docs/08-MONITORING-LAB.md) | Prometheus·Alertmanager·Grafana·Blackbox Lab 설명 |
 | [docs/09-TABLETOP-SESSION-AGENDA.md](docs/09-TABLETOP-SESSION-AGENDA.md) | 모의 관제 테이블탑 15분 아젠다 |
+| [docs/10-RISK-REGISTER.md](docs/10-RISK-REGISTER.md) | 위험 등록부 (가상) |
+| [docs/11-DATA-CLASSIFICATION-RETENTION.md](docs/11-DATA-CLASSIFICATION-RETENTION.md) | 데이터 분류·보존·마스킹 |
+| [docs/12-ACCESS-LIFECYCLE.md](docs/12-ACCESS-LIFECYCLE.md) | 계정·권한 입사/이동/퇴사 |
+| [docs/13-CONTROLS-MAPPING.md](docs/13-CONTROLS-MAPPING.md) | ISO 27001 Annex A 요지 매핑 |
+| [docs/14-SECURITY-AWARENESS-METRICS.md](docs/14-SECURITY-AWARENESS-METRICS.md) | 인식·피싱 시뮬 지표(더미) |
+| [docs/15-BREACH-SCENARIO-ACCOUNT-TAKEOVER.md](docs/15-BREACH-SCENARIO-ACCOUNT-TAKEOVER.md) | 침해 시나리오 1페이지(가상) |
 | [docs/ABOUT-ME-TEMPLATE.md](docs/ABOUT-ME-TEMPLATE.md) | 본인 경험 서사 초안 (실제 vs 가상 구분) |
 | [docs/assets/README.md](docs/assets/README.md) | 스크린샷 촬영 가이드 |
 | [docs/adr/README.md](docs/adr/README.md) | ADR 목록 |
@@ -124,7 +130,7 @@ git add .github/workflows/ci.yml && git commit -m "ci: GitHub Actions 추가" &&
 
 - **채용 담당자**: `README` → `docs/00-PORTFOLIO-BRIEF.md` → `docs/03-RUNBOOKS.md` 앞부분.
 - **SRE / 인프라**: `docs/01-ARCHITECTURE.md` → `examples/demo-stack` → `examples/monitoring-lab` → `automation/scripts` → `infra/*`.
-- **보안 / 관제**: `docs/02-SECURITY-GOVERNANCE.md` → `security/` → `monitoring/examples` → `docs/08-MONITORING-LAB.md`.
+- **보안 / 관제**: `docs/02-SECURITY-GOVERNANCE.md` → `docs/10-RISK-REGISTER.md` → `docs/11`~`15` → `security/` → `monitoring/examples` → `docs/08-MONITORING-LAB.md`.
 
 ## 02 · 03 · 11 포트폴리오와 나누기
 

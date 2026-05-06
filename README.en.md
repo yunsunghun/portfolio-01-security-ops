@@ -11,7 +11,8 @@
 | Security / SOC | Governance docs, mock SOC tabletop, ethical lab ROE template |
 | Monitoring | **Docker Lab**: Prometheus, **Alertmanager**, Grafana, Blackbox; optional smoke script |
 | API contract | [examples/api-contract/openapi.yaml](examples/api-contract/openapi.yaml) — **DL-BFF** dummy OpenAPI (no server impl.) |
-| Vuln & patch (series) | [Portfolio 11](https://github.com/yunsunghun/portfolio-11-vulnerability-patch-ops) — patch windows, SLA tracker, SBOM how-to |
+| Vuln & patch (series) | [Portfolio 11](https://github.com/yunsunghun/portfolio-11-vulnerability-patch-ops) — patch windows, SLA tracker, SBOM how-to, [supply chain policy](https://github.com/yunsunghun/portfolio-11-vulnerability-patch-ops/blob/master/docs/SUPPLY-CHAIN-POLICY.md) |
+| Security program (fictional) | Risk register, data classification, access lifecycle, ISO Annex A mapping, awareness metrics, breach scenario — see `docs/10`–`15` in this repo |
 
 ## Quick start
 
