@@ -1,0 +1,127 @@
+# GitHub Actions — 단일 소스 (문서·README의 CI 설명은 이 파일을 기준으로 합니다)
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+permissions:
+  contents: read
+
+jobs:
+  shellcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install ShellCheck
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -qq shellcheck
+      - name: Run ShellCheck
+        run: shellcheck automation/scripts/*.sh
+
+  terraform:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: infra/terraform
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.7.5"
+      - name: fmt check
+        run: terraform fmt -check -recursive
+      - name: init & validate
+        run: |
+          terraform init -backend=false
+          terraform validate
+
+  gitleaks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  trivy-fs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          scan-type: fs
+          scan-ref: .
+          severity: CRITICAL,HIGH
+          ignore-unfixed: true
+          exit-code: "1"
+          trivyignores: .trivyignore
+          # IaC/Compose 오탐을 줄이고 공지 CVE(라이브러리·OS 패키지) 위주로 게이트
+          scanners: vuln
+
+  compose-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: docker compose config (syntax / merge)
+        run: |
+          docker compose -f examples/demo-stack/docker-compose.yml config -q
+          docker compose -f examples/monitoring-lab/docker-compose.yml config -q
+
+  demo-stack-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Start DL-PORTAL demo (Nginx /health)
+        working-directory: examples/demo-stack
+        run: docker compose up -d --wait
+      - name: HTTP /health
+        run: curl -sf http://127.0.0.1:8080/health
+      - name: Healthcheck script (same contract)
+        run: chmod +x automation/scripts/healthcheck.sh && ./automation/scripts/healthcheck.sh
+        env:
+          BASE_URL: http://127.0.0.1:8080
+      - name: Tear down
+        if: always()
+        working-directory: examples/demo-stack
+        run: docker compose down -v
+
+  ops-scripts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Disk check (runner root FS)
+        run: chmod +x automation/scripts/disk_check.sh && ./automation/scripts/disk_check.sh
+      - name: Log watchdog (no ERROR match — 샘플 로그에 ERROR가 있어 패턴 분리)
+        run: chmod +x automation/scripts/log_watchdog.sh && PATTERN=ZYX_CI_NOMATCH123 ./automation/scripts/log_watchdog.sh
+
+  ansible-openapi-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install tooling
+        run: pip install --quiet pyyaml ansible-core
+      - name: OpenAPI YAML parse (UTF-8)
+        run: python -c "import yaml; yaml.safe_load(open('examples/api-contract/openapi.yaml', encoding='utf-8'))"
+      - name: Ansible playbook syntax
+        run: ansible-playbook --syntax-check -i 'localhost,' infra/ansible/playbook.yml
+        env:
+          LANG: C.UTF-8
+
+  pre-commit-config:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install --quiet pre-commit
+      - run: pre-commit validate-config

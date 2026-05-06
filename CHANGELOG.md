@@ -2,11 +2,24 @@
 
 포트폴리오·교육용 저장소입니다. 버전은 **문서상**의 마일스톤입니다.
 
+## [0.8.0] — 2026-05-07
+
+### Added
+
+- **`.github/workflows/ci.yml`** — CI 단일 소스: Compose `config` 검증, 데모 스택 스모크(`/health` + 스크립트), 운영 스크립트 스모크, Ansible 구문·OpenAPI UTF-8 파싱, **pre-commit 설정 검증**, Dependabot **github-actions** 업데이트.
+- **`.pre-commit-config.yaml`** — ShellCheck·기본 훅(선택).
+- **`.gitleaks.toml`** — 샘플 접근 리뷰 표의 가상 키 이름 오탐 allowlist.
+
+### Changed
+
+- `docs/reference-github-actions-ci.yml` 제거(중복 방지). 문서·README 링크는 `.github/workflows/ci.yml`로 통일.
+- Trivy CI는 **`scanners: vuln`** 으로 게이트(IaC 오탐 완화). Misconfig까지 게이트하려면 워크플로에서 `scanners` 줄을 제거하거나 `vuln,misconfig`로 확장.
+
 ## [0.7.0] — 2026-05-07
 
 ### Added
 
-- CI 참조에 **Gitleaks**, **Trivy fs** 잡 추가 (`docs/reference-github-actions-ci.yml`).
+- CI에 **Gitleaks**, **Trivy fs** 잡 추가(당시 `docs/reference-github-actions-ci.yml` 참조 — 0.8.0에서 `.github/workflows/ci.yml`로 통합).
 - `.trivyignore`(주석 예시), `docs/16-CI-SECURITY-SCANNING.md` 활성화 가이드.
 
 ## [0.6.0] — 2026-05-07

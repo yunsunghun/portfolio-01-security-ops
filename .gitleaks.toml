@@ -1,0 +1,8 @@
+# 포트폴리오 샘플 문서의 가상 자격 증명 표기 오탐 방지
+title = "portfolio-01"
+
+[allowlist]
+description = "Fictional access-review table cells (DemoLab)"
+paths = [
+  "security/access-review-quarterly-sample.md",
+]

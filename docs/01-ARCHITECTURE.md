@@ -41,7 +41,7 @@ flowchart LR
 | BFF API | `DL-BFF` | 주문 조회 API (가상) | 문서·알림 규칙에만 등장 |
 | 로드밸런서 | `LB-LAB-01` | TLS 종료 (가상) | 데모에서는 생략 |
 | 점프호스트 | `jmp-lab-01` | `10.50.0.10` | Ansible 인벤토리 예시 |
-| 배포 파이프라인 | `REL-*` | 품질 게이트 | `docs/reference-github-actions-ci.yml` |
+| 배포 파이프라인 | `REL-*` | 품질 게이트 | `.github/workflows/ci.yml` |
 | 인프라 코드 | `IAC-LAB` | 재현 가능 환경 | `infra/terraform`, `infra/ansible` |
 
 ## 3. 데이터 흐름

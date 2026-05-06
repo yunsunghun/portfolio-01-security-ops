@@ -6,11 +6,11 @@
 
 ## English (summary)
 
-**DemoLab (fictional)** operations portfolio: runbooks, security governance templates, **Docker demos**, **Terraform/Ansible samples**, a **Monitoring Lab** (Prometheus, **Alertmanager**, Grafana, Blackbox), and CI reference (`docs/reference-github-actions-ci.yml`). All IPs/tickets are **dummy** — see [docs/DUMMY-CANON.md](docs/DUMMY-CANON.md). For your own narrative, use [docs/ABOUT-ME-TEMPLATE.md](docs/ABOUT-ME-TEMPLATE.md). Full English readme: [README.en.md](README.en.md) · [CHANGELOG.md](CHANGELOG.md).
+**DemoLab (fictional)** operations portfolio: runbooks, security governance templates, **Docker demos**, **Terraform/Ansible samples**, a **Monitoring Lab** (Prometheus, **Alertmanager**, Grafana, Blackbox), and **GitHub Actions CI** ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)). All IPs/tickets are **dummy** — see [docs/DUMMY-CANON.md](docs/DUMMY-CANON.md). For your own narrative, use [docs/ABOUT-ME-TEMPLATE.md](docs/ABOUT-ME-TEMPLATE.md). Full English readme: [README.en.md](README.en.md) · [CHANGELOG.md](CHANGELOG.md).
 
 ## 한 줄 요약
 
-**가용성 점검, 서버 기준선, 보안 거버넌스 문서, 인시던트 런북**을 한 레포에 묶고, **Docker 데모 + Terraform/Ansible 샘플 + CI 정의(`docs/reference-github-actions-ci.yml`)**로 재현성을 보여 줍니다.
+**가용성 점검, 서버 기준선, 보안 거버넌스 문서, 인시던트 런북**을 한 레포에 묶고, **Docker 데모 + Terraform/Ansible 샘플 + GitHub Actions CI([`.github/workflows/ci.yml`](.github/workflows/ci.yml))**로 재현성을 보여 줍니다.
 
 ## 이 저장소로 보여 주고 싶은 역량
 
@@ -113,22 +113,20 @@
 ├── infra/ansible/           # localhost 기준선 플레이북
 ├── monitoring/examples/     # Prometheus 알림 샘플
 ├── security/                # 정책·CVE 템플릿
-└── docs/reference-github-actions-ci.yml  # GitHub Actions CI (복사해 활성화)
+└── .github/workflows/ci.yml # GitHub Actions (push/PR 자동)
 ```
 
-### GitHub Actions를 켜려면
+### GitHub Actions
 
-`gh` HTTPS 토큰에 **workflow** 권한이 있어야 `.github/workflows/`에 YAML을 푸시할 수 있습니다. 아래 후 이 파일을 `.github/workflows/ci.yml`로 복사해 커밋하세요.
+- 워크플로는 [`.github/workflows/ci.yml`](.github/workflows/ci.yml)에 있습니다. `main`/`master`로 푸시하거나 PR을 열면 실행됩니다.
+- `gh` HTTPS 토큰에 **workflow** 권한이 없으면 **워크플로 YAML을 푸시할 때만** 거절될 수 있습니다. (이미 레포에 포함된 경우 클론 후 수정·푸시 시 필요)
 
 ```bash
 gh auth refresh -h github.com -s workflow
-mkdir -p .github/workflows
-cp docs/reference-github-actions-ci.yml .github/workflows/ci.yml
-git add .github/workflows/ci.yml .trivyignore
-git commit -m "ci: GitHub Actions (ShellCheck, Terraform, Gitleaks, Trivy)" && git push
 ```
 
-보안 스캔 설명: [docs/16-CI-SECURITY-SCANNING.md](docs/16-CI-SECURITY-SCANNING.md).
+- 보안 스캔·Trivy 튜닝: [docs/16-CI-SECURITY-SCANNING.md](docs/16-CI-SECURITY-SCANNING.md)
+- 로컬 품질 게이트·브랜치 보호: [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## 독자별 추천 읽기 순서
 
