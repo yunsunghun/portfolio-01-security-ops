@@ -1,0 +1,2 @@
+# Linux CI(ShellCheck 등)에서 CRLF로 인한 SC1017 방지
+*.sh text eol=lf

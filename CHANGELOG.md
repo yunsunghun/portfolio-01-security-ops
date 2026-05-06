@@ -2,6 +2,13 @@
 
 포트폴리오·교육용 저장소입니다. 버전은 **문서상**의 마일스톤입니다.
 
+## [0.8.1] — 2026-05-07
+
+### Fixed
+
+- `automation/scripts/*.sh`, `examples/monitoring-lab/scripts/smoke.sh` — **CRLF → LF** (GitHub Actions ShellCheck 실패 방지).
+- `.gitattributes` — `*.sh`에 `eol=lf` 고정.
+
 ## [0.8.0] — 2026-05-07
 
 ### Added
