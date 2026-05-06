@@ -89,6 +89,7 @@
 | [CHANGELOG.md](CHANGELOG.md) | 변경 요약 |
 | [README.en.md](README.en.md) | 영문 README |
 | [security/access-review-quarterly-sample.md](security/access-review-quarterly-sample.md) | 분기 접근 리뷰 샘플(더미) |
+| [examples/api-contract/README.md](examples/api-contract/README.md) | **DL-BFF** OpenAPI 3.0 더미 계약 |
 
 ## 디렉터리 구조
 
@@ -97,6 +98,7 @@
 ├── docs/                    # 기획·아키텍처·운영 문서
 ├── examples/demo-stack/     # DL-PORTAL Nginx 데모 (/health)
 ├── examples/monitoring-lab/ # Prometheus + Alertmanager + Grafana + Blackbox
+├── examples/api-contract/   # DL-BFF OpenAPI 더미 (구현 없음)
 ├── examples/sample-data/    # CMDB CSV, 앱 로그, 인시던트 타임라인(더미)
 ├── automation/scripts/      # 헬스·디스크·로그·백업 스텁
 ├── infra/terraform/         # random 리소스 예제 (로컬 검증용)
@@ -123,9 +125,9 @@ git add .github/workflows/ci.yml && git commit -m "ci: GitHub Actions 추가" &&
 - **SRE / 인프라**: `docs/01-ARCHITECTURE.md` → `examples/demo-stack` → `examples/monitoring-lab` → `automation/scripts` → `infra/*`.
 - **보안 / 관제**: `docs/02-SECURITY-GOVERNANCE.md` → `security/` → `monitoring/examples` → `docs/08-MONITORING-LAB.md`.
 
-## 02 · 03 포트폴리오와 나누기
+## 02 · 03 · 11 포트폴리오와 나누기
 
-01은 **통합 운영 레퍼런스**로 두고, 02는 관측성/SLO, 03은 침해 대응·컴플라이언스 심화를 권장합니다. (상세는 포트폴리오 브리프 참고.)
+01은 **통합 운영 레퍼런스**로 두고, 02는 관측성/SLO, 03은 인시던트·포스트모템, **11은 취약점·패치 운영 쇼케이스**입니다. (상세는 [포트폴리오 브리프](docs/00-PORTFOLIO-BRIEF.md) 참고.)
 
 ## 기여 · 스크린샷
 

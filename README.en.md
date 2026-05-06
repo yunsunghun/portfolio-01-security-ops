@@ -10,6 +10,8 @@
 | Server ops | Disk/log scripts, Ansible baseline sample |
 | Security / SOC | Governance docs, mock SOC tabletop, ethical lab ROE template |
 | Monitoring | **Docker Lab**: Prometheus, **Alertmanager**, Grafana, Blackbox; optional smoke script |
+| API contract | [examples/api-contract/openapi.yaml](examples/api-contract/openapi.yaml) — **DL-BFF** dummy OpenAPI (no server impl.) |
+| Vuln & patch (series) | [Portfolio 11](https://github.com/yunsunghun/portfolio-11-vulnerability-patch-ops) — patch windows, SLA tracker, SBOM how-to |
 
 ## Quick start
 

@@ -1,0 +1,81 @@
+openapi: 3.0.3
+info:
+  title: DL-BFF — Partner Order API (DemoLab)
+  description: |
+    **가상** BFF API 계약서. 구현체는 이 저장소에 없으며, 포트폴리오·Lab 설명용입니다.
+    규약 [docs/DUMMY-CANON.md](../../docs/DUMMY-CANON.md)
+  version: 1.8.3
+  contact:
+    name: DemoLab Platform (fictional)
+    url: https://github.com/yunsunghun/portfolio-01-security-ops
+
+servers:
+  - url: https://bff.lab.demolab.internal
+    description: Lab (문서상)
+  - url: http://127.0.0.1:8080
+    description: 로컬 포털 데모와 별개 — 스키마 참고용 placeholder
+
+tags:
+  - name: Orders
+    description: 주문 조회 (더미)
+  - name: Health
+    description: 가용성
+
+paths:
+  /v1/orders/{orderId}:
+    get:
+      tags: [Orders]
+      operationId: getOrderById
+      summary: 단일 주문 조회
+      parameters:
+        - name: orderId
+          in: path
+          required: true
+          schema:
+            type: string
+            example: ORD-LAB-9001
+      responses:
+        "200":
+          description: 조회 성공
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Order"
+        "404":
+          description: 주문 없음
+        "500":
+          description: Upstream 오류 (INC-2026-0412 시나리오와 연계 가능)
+
+  /health:
+    get:
+      tags: [Health]
+      operationId: getHealth
+      summary: 헬스 (BFF가 직접 노출한다고 가정)
+      responses:
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ok
+
+components:
+  schemas:
+    Order:
+      type: object
+      required: [orderId, status]
+      properties:
+        orderId:
+          type: string
+          example: ORD-LAB-9001
+        status:
+          type: string
+          enum: [CREATED, PAID, SHIPPED, CANCELLED]
+        currency:
+          type: string
+          example: KRW
+        totalMinorUnits:
+          type: integer
+          format: int64
+          example: 12000
