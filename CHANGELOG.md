@@ -2,6 +2,14 @@
 
 포트폴리오·교육용 저장소입니다. 버전은 **문서상**의 마일스톤입니다.
 
+## [0.5.1] — 2026-05-07
+
+### Added
+
+- `docs/assets/grafana-dashboard-mockup.png` — 모니터링 대시보드 **AI 생성 목업**(실제 캡처 아님).
+- `docs/assets/monitoring-lab-wireframe.svg` — 와이어프레임.
+- `docs/ABOUT-ME-FILLED-SAMPLE.md` — **가상 인물** 예시 서사(이력서에 그대로 사용 금지 안내).
+
 ## [0.5.0] — 2026-05-07
 
 ### Added

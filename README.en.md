@@ -37,6 +37,8 @@ sh examples/monitoring-lab/scripts/smoke.sh
 - Monitoring lab: [docs/08-MONITORING-LAB.md](docs/08-MONITORING-LAB.md)
 - Changelog: [CHANGELOG.md](CHANGELOG.md)
 - Contributing: [CONTRIBUTING.md](CONTRIBUTING.md)
+- **Fictional** narrative sample (replace before interviews): [docs/ABOUT-ME-FILLED-SAMPLE.md](docs/ABOUT-ME-FILLED-SAMPLE.md)
+- Screenshots / mockups: [docs/assets/README.md](docs/assets/README.md)
 
 ## CI
 

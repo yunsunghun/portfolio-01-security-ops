@@ -90,6 +90,7 @@
 | [README.en.md](README.en.md) | 영문 README |
 | [security/access-review-quarterly-sample.md](security/access-review-quarterly-sample.md) | 분기 접근 리뷰 샘플(더미) |
 | [examples/api-contract/README.md](examples/api-contract/README.md) | **DL-BFF** OpenAPI 3.0 더미 계약 |
+| [docs/ABOUT-ME-FILLED-SAMPLE.md](docs/ABOUT-ME-FILLED-SAMPLE.md) | 예시 서사(가상 인물 — **본인으로 교체**) |
 
 ## 디렉터리 구조
 
@@ -129,10 +130,11 @@ git add .github/workflows/ci.yml && git commit -m "ci: GitHub Actions 추가" &&
 
 01은 **통합 운영 레퍼런스**로 두고, 02는 관측성/SLO, 03은 인시던트·포스트모템, **11은 취약점·패치 운영 쇼케이스**입니다. (상세는 [포트폴리오 브리프](docs/00-PORTFOLIO-BRIEF.md) 참고.)
 
-## 기여 · 스크린샷
+## 기여 · 스크린샷 · 예시 서사
 
 - [CONTRIBUTING.md](CONTRIBUTING.md)
-- 캡처 가이드: [docs/assets/README.md](docs/assets/README.md)
+- 스크린샷·목업: [docs/assets/README.md](docs/assets/README.md) (`grafana-dashboard-mockup.png` = **AI 목업**, 실제 캡처로 교체 권장)
+- 예시 서사(가상 인물·**교체 필수**): [docs/ABOUT-ME-FILLED-SAMPLE.md](docs/ABOUT-ME-FILLED-SAMPLE.md)
 
 ## 라이선스 · 보안
 
