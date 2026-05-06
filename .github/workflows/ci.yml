@@ -20,7 +20,9 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get install -qq shellcheck
       - name: Run ShellCheck
-        run: shellcheck automation/scripts/*.sh
+        run: |
+          shellcheck --version
+          find automation/scripts -maxdepth 1 -type f -name '*.sh' -print0 | xargs -0 shellcheck
 
   terraform:
     runs-on: ubuntu-latest

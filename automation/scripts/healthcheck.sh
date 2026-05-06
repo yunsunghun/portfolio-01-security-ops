@@ -5,7 +5,14 @@ set -eu
 BASE_URL="${BASE_URL:-http://127.0.0.1:8080}"
 URL="${BASE_URL%/}/health"
 
-code=$(curl -sS -o /dev/null -w '%{http_code}' "$URL" || true)
+set +e
+code=$(curl -sS -o /dev/null -w '%{http_code}' "$URL")
+curl_ec=$?
+set -e
+if [ "$curl_ec" -ne 0 ]; then
+  code="000"
+fi
+
 if [ "$code" != "200" ]; then
   echo "healthcheck FAIL: HTTP $code ($URL)" >&2
   exit 1

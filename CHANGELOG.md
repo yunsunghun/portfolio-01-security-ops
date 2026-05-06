@@ -6,8 +6,11 @@
 
 ### Fixed
 
-- `automation/scripts/*.sh`, `examples/monitoring-lab/scripts/smoke.sh` — **CRLF → LF** (GitHub Actions ShellCheck 실패 방지).
+- `automation/scripts/*.sh`, `examples/monitoring-lab/scripts/smoke.sh` — 작업 트리 **CRLF → LF** 정리(Windows에서 편집 시 ShellCheck **SC1017** 등 방지).
 - `.gitattributes` — `*.sh`에 `eol=lf` 고정.
+- `healthcheck.sh` — `curl` 종료 코드를 **명시 처리**(ShellCheck **SC2312** 등 마스킹 경고 회피).
+- `log_watchdog.sh` — `cd` 실패 시 종료(**SC2164**), `grep -Fq --`로 고정 문자열 매칭.
+- CI ShellCheck 단계 — `find … | xargs shellcheck`로 파일 목록 명시.
 
 ## [0.8.0] — 2026-05-07
 
