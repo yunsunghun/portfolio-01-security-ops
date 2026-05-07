@@ -2,6 +2,14 @@
 
 포트폴리오·교육용 저장소입니다. 버전은 **문서상**의 마일스톤입니다.
 
+## [0.8.2] — 2026-05-07
+
+### Fixed
+
+- `log_watchdog.sh` — `CDPATH= cd` 패턴 제거(**SC1007**). `CDPATH` 저장·비우고 `cd`/`pwd`로 절대 경로 계산.
+- CI ShellCheck — `find … -exec shellcheck {} +`로 변경(xargs가 자식 **exit 1을 123으로** 바꾸는 혼동 방지).
+- `actions/checkout@v4` → **`@v5`** (Node 20 deprecation 경고 완화).
+
 ## [0.8.1] — 2026-05-07
 
 ### Fixed

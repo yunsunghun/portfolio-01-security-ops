@@ -2,8 +2,14 @@
 # 최근 로그에서 패턴 검색 (보안관제 — 단순 시연)
 set -eu
 
-SCRIPT_DIR=$(CDPATH= cd -- "$(dirname "$0")" && pwd) || exit 1
-REPO_ROOT=$(CDPATH= cd -- "$SCRIPT_DIR/../.." && pwd) || exit 1
+# CDPATH가 설정된 셸에서 `cd ./dir`이 다른 경로로 튀는 것을 막음 (SC1007 회피: `VAR= cmd` 대신 블록)
+saved_cdpath=${CDPATH-}
+CDPATH=''
+cd -- "$(dirname "$0")" || exit 1
+SCRIPT_DIR=$(pwd)
+cd -- "$SCRIPT_DIR/../.." || exit 1
+REPO_ROOT=$(pwd)
+CDPATH=$saved_cdpath
 LOG_FILE="${LOG_FILE:-$REPO_ROOT/examples/sample-data/app.log}"
 PATTERN="${PATTERN:-ERROR}"
 
